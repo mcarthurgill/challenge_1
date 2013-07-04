@@ -9,9 +9,15 @@ get '/events/:id/show' do |id|
 end
 
 get '/events/new' do
-  #render form to create event
+  erb :event_new
 end
 
 post '/events/create' do
-  #on post of that form above save it in database
+	event = Event.new(params[:event])
+	if event.save
+		redirect "/events/#{event.id}/show"
+	else
+		show_errors(event)
+		erb :event_new
+	end
 end

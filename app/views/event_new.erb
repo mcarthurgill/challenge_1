@@ -1,0 +1,18 @@
+<form id = "event_form" action="/events/create" method="POST">
+	<input type = "text" placeholder="Organizer Name" name="event[organizer_name]"><br>
+	<input type = "text" placeholder="Organizer Email" name="event[organizer_email]"><br>
+	<input type = "text" placeholder="Title" name="event[title]"><br>
+	<input type = "date" name="event[date]"><br>
+	<input type = "submit" value="Create Event">
+</form>
+
+
+<div class="errors">
+	<ul>
+	<% if @errors %>
+		<% @errors.full_messages.each do |message|  %>
+			<li><%= message %></li>
+		<% end %>
+	<% end %>
+</ul>
+</div>
